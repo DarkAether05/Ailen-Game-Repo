@@ -13,6 +13,7 @@ public class TestScrpit : MonoBehaviour
        Debug.Log("And my Axe");
 
        transform.Translate(1, 1, 1);
+       transform.Rotate(0, 0, 180);
     }
 
     // Update is called once per frame
