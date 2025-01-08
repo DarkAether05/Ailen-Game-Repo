@@ -6,6 +6,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D physicsBody = null;
+    public float speed = 4f;
+    public float jumpSpeed = 10f;
+    public Collider2D groundSensor = null;
+    public LayerMask groundLayer = 0; 
+
     //Awake is called before start
     private void Awake()
     {
@@ -20,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         //get the velocity from the rigidbody
         Vector2 newVelocity = physicsBody.velocity;
 
-        newVelocity.x = -1;
+        newVelocity.x = -speed;
 
         physicsBody.velocity = newVelocity;
     }
@@ -32,8 +37,21 @@ public class PlayerMovement : MonoBehaviour
         //get the velocity from the rigidbody
         Vector2 newVelocity = physicsBody.velocity;
 
-        newVelocity.x = 1;
+        newVelocity.x = speed;
 
         physicsBody.velocity = newVelocity;
+    }
+
+    public void Jump()
+    {
+        if (groundSensor.IsTouchingLayers(groundLayer))
+        {
+            Vector2 newVelocity = physicsBody.velocity;
+
+            newVelocity.y = jumpSpeed;
+
+            physicsBody.velocity = newVelocity;
+        }
+
     }
 }
