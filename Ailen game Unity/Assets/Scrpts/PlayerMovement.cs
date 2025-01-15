@@ -9,12 +9,24 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 4f;
     public float jumpSpeed = 10f;
     public Collider2D groundSensor = null;
-    public LayerMask groundLayer = 0; 
+    public LayerMask groundLayer = 0;
+    public Joystick myJoystick = null;
+
 
     //Awake is called before start
     private void Awake()
     {
         physicsBody = GetComponent<Rigidbody2D>();
+    }
+
+    // FixedUpdate is called once per physics update
+    private void FixedUpdate()
+    {
+        Vector2 newVelocity = physicsBody.velocity;
+
+        newVelocity.x = speed * myJoystick.Horizontal;
+
+        physicsBody.velocity = newVelocity;
     }
 
     public void MoveLeft()
