@@ -26,4 +26,8 @@ public class PlayerHealth : MonoBehaviour
         currantHealth = startingHealth;
     }
     public void ChangeHealth(int changeAmount)
+    {
+        currantHealth = currantHealth + changeAmount;
+        currantHealth = Mathf.Clamp(currantHealth, 0, startingHealth);
+    }
 }

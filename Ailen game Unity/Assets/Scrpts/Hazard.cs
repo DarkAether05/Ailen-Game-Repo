@@ -28,4 +28,5 @@ public class Hazard : MonoBehaviour
             player.Kill();
         }
     }
+    public void hazardDamage
 }
