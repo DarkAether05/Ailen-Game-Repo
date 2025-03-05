@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
+    public int hazardDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +26,8 @@ public class Hazard : MonoBehaviour
         if (player != null)
         {
             // Call the kill function on the player varible
-            player.Kill();
+            player.ChangeHealth(-hazardDamage);
         }
+        
     }
-    public void hazardDamage
 }
